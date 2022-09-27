@@ -1,5 +1,5 @@
 <?php 
-    echo "this is a php block without the ending.";
+$hello = "Hello World!";
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,6 @@
     <title>PHP Basics</title>
 </head>
 <body>
-    
+    <p><?php echo $hello; ?></p>
 </body>
 </html>
