@@ -2,6 +2,9 @@
 // Variables
 $hello = "Hello World!";
 $name = "Michael";
+$int = 15;
+$float = 8.23;
+$bool = true;
 ?>
 
 <!DOCTYPE html>
@@ -15,5 +18,8 @@ $name = "Michael";
 <body>
     <p><?php echo $hello; ?></p>
     <p><?php echo $name; ?></p>
+    <p><?php echo $int; ?></p>
+    <p><?php echo $float; ?></p>
+    <p><?php echo $bool; ?></p>
 </body>
 </html>
