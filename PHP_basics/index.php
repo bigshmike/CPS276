@@ -26,7 +26,7 @@ $bool = true;
             echo "They are the same";
         }
         else {
-            echo "They are not the same";
+            echo "They are not the same.";
         }
         ?>
     </p>
