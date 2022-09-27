@@ -1,5 +1,6 @@
 <?php 
 $hello = "Hello World!";
+$name = "Michael";
 ?>
 
 <!DOCTYPE html>
@@ -12,5 +13,6 @@ $hello = "Hello World!";
 </head>
 <body>
     <p><?php echo $hello; ?></p>
+    <p><?php echo $name; ?></p>
 </body>
 </html>
