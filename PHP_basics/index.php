@@ -3,7 +3,7 @@
 $hello = "Hello World!";
 $name = "Michael";
 $int = 15;
-$float = 8.23;
+$float = 15.123;
 $bool = true;
 ?>
 
@@ -21,5 +21,14 @@ $bool = true;
     <p><?php echo $int; ?></p>
     <p><?php echo $float; ?></p>
     <p><?php echo $bool; ?></p>
+    <p><?php 
+        if($int == $float) {
+            echo "They are the same";
+        }
+        else {
+            echo "They are not the same";
+        }
+        ?>
+    </p>
 </body>
 </html>
