@@ -1,4 +1,5 @@
 <?php 
+// Variables
 $hello = "Hello World!";
 $name = "Michael";
 ?>
