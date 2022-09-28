@@ -5,6 +5,26 @@ $name = "Michael";
 $int = 15;
 $float = 15.123;
 $bool = true;
+
+//heredoc
+$string = <<<STR
+This is a heredoc multi-line string with "quotes", the double quotes render because we are using the heredoc, where both 'single' and "double" quotes render.
+STR;
+
+$favoriteAnimal = "cat";
+
+$string .= " You can also ";
+$string .= "add to strings using the dot-equals (.=) operator.";
+
+// Function
+function myFunction() {
+    $str = "this is my function";
+    return $str;
+}
+echo "<pre>"; // gives the array a nice float-like appearance instead of one-line
+$arr = [1, 2, 3, 4 ];
+print_r($arr);
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -30,5 +50,8 @@ $bool = true;
         }
         ?>
     </p>
+    <p><?php echo $string ?></p>
+    <p><?php echo "My favorite animals are {$favoriteAnimal}s"; ?></p>
+    <p><?php echo myFunction(); ?></p>
 </body>
 </html>
