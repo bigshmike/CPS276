@@ -1,12 +1,12 @@
 <?php
 function orderedListIncrementer() {
     echo "<ul>";
-    for ($i = 1; $i < 5; $i++) { 
-        echo "<li>".$i;
+    for ($i = 1; $i < 5; $i++) {
+        echo "<li>" . $i;
         echo "<ul>";
         for ($j = 1; $j <= 5; $j++) {
-            echo "<li>".$j."</li>";
-        } 
+            echo "<li>" . $j . "</li>";
+        }
         echo "</ul>";
     }
     echo "</ul>";
