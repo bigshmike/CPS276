@@ -24,6 +24,6 @@ function createTable() {
     <title>Exercise 3</title>
 </head>
 <body>
-    <p><?php createTable(); ?></p>
+    <div><?php createTable(); ?></div>
 </body>
 </html>
