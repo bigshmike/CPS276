@@ -13,7 +13,7 @@ function sampleText() {
     Nullam ut enim id erat bibendum finibus nec ac eros. Nulla malesuada ex facilisis ultrices rhoncus. Nullam in euismod nisl. Donec pulvinar ex sit amet aliquet egestas.
     STR;
     for($i = 1; $i <=3; $i++) {
-        echo $text . "<br/><br/>";
+        echo $text . "<br><br>";
     }
 }
 ?>
