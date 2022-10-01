@@ -2,7 +2,7 @@
 $title = "Exercise 2";
 $heading1 = "My Web Page";
 $name = "Michael Brown";
-$footer = $heading1." © 2022";
+$footer = $heading1 . " © 2022";
 
 function sampleText() {
     $text = <<<STR
