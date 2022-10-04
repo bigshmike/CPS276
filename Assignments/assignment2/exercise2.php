@@ -5,7 +5,7 @@ $name = "Michael Brown";
 $footer = $heading1 . " © 2022";
 
 function sampleText() {
-    $text = <<<STR
+    $text = <<< STR
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat mollis dolor at bibendum. 
     In congue maximus ligula, ut faucibus mi accumsan at. Vestibulum sagittis tortor eget dui ultricies, a vulputate lacus faucibus. 
     Fusce aliquet bibendum erat, sed bibendum eros cursus eu. Nulla at neque rhoncus, ultricies odio at, accumsan elit. Proin in turpis eu leo dapibus pulvinar. 
