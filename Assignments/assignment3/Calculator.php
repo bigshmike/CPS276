@@ -30,7 +30,7 @@ class Calculator {
                 $_result .= $_numb1 / $_numb2;
                 break;
             default:
-                $_result = "Invalid or missing string operator";
+                $_result = "Invalid or missing string operator/integer";
                 break;
         }
         echo $_result;    
