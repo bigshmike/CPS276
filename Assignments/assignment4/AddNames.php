@@ -6,5 +6,6 @@ class AddNames {
         $output = <<<HTML
                 {$_POST['namefield']}
             HTML;
+            return $output;
     }
 }
