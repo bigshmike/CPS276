@@ -1,7 +1,11 @@
 <?php
-    require_once 'AddNames.php';
-    $addName = new AddNames();
-    $output = $addName->addName();
+    $output = "";
+    if(count($_POST) > 0) {
+        require_once 'AddNames.php';
+        $addName = new AddNames();
+        $output = $addName->addName();
+    }
+    
 ?>
 
 <!DOCTYPE html>

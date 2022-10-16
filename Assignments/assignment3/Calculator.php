@@ -6,10 +6,7 @@ class Calculator {
     private $_operator = "";
 
     function calc($_operator = null, $_numb1 = null, $_numb2 = null) {
-        if($_numb2 === 0) {
-            return "You cannot divide by 0";
-        }
-        else if($_operator == null || $_numb1 == null || $_numb2 == null) {
+        if($_operator == null || $_numb1 == null || $_numb2 == null) {
             return "You must enter a string and two numbers";
         }
         switch($_operator) {
@@ -26,8 +23,13 @@ class Calculator {
                 $_result .= $_numb1 * $_numb2;
                 break;
             case "/":
-                $_result = "The quotient of these two numbers is ";
-                $_result .= $_numb1 / $_numb2;
+                if($_numb2 === 0) {
+                    return "You cannot divide by 0";
+                }
+                else {
+                    $_result = "The quotient of these two numbers is ";
+                    $_result .= $_numb1 / $_numb2;
+                }
                 break;
             default:
                 $_result = "Invalid or missing string operator/integer";
