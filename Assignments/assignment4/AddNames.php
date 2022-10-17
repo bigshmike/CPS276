@@ -3,20 +3,19 @@
 class AddNames {
     function addName() {
         $nameField = $_POST['nameField'];
-        $listOfNames = "";
         if (isset($_POST['addName'])) {
-            $arr = explode(" ", $nameField);
-            array_push($arr);
-            sort($arr);
-            $str = implode(", ", $arr);
-            $listOfNames .= $str;
+            $listOfNames = array();
+            $capturedName = explode(" ", $nameField);
+            array_push($listOfNames, $capturedName);
+            sort($listOfNames);
+            $outputOfNames = implode(", ", $listOfNames);
         }
         if (isset($_POST['clearNames'])) {
             $nameField = "";
             $listOfNames = "";
-            return $str = "";
+            return $outputOfNames = "";
         }
-        return "$listOfNames\n";
+        return "$outputOfNames\n";
     }
 }
 ?>
