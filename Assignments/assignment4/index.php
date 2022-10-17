@@ -23,15 +23,15 @@
     <div class="container">
         <form method="post" action="#">
             <h1>Add Names</h1>
-            <input class="btn btn-primary" type="submit" name="addname" value="Add Name">
-            <input class="btn btn-primary" type="reset" value="Clear Names">
+            <input class="btn btn-primary" type="submit" name="addName" value="Add Name">
+            <input class="btn btn-primary" type="submit" name="clearNames" value="Clear Names">
             <div class="mb-3">
                 <label for="nameField" class="form-label">Enter Name</label>
-                <input type="text" class="form-control" id="nameField" name="namefield" placeholder="First & Last Name">
+                <input type="text" class="form-control" id="nameField" name="nameField" placeholder="First & Last Name">
             </div>
             <label for="listOfNames">List of Names</label>
             <div class="form-floating">
-                <textarea class="form-control" id="listOfNames" name="listofnames" style="height: 500px">
+                <textarea class="form-control" id="listOfNames" name="listOfNames" style="height: 500px">
                     <?php echo $output; ?>
                 </textarea>
             </div>
