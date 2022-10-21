@@ -24,16 +24,21 @@ if (count($_POST) > 0) {
             <h1>File and Directory Assignment</h1>
             <p>Enter a folder name and the contents of a file. Folder names should contain alpha numeric characters only.</p>
             <?php
-                if (isset($_POST['submit'])) {
+            if (isset($_POST['submit'])) {
+                try {
                     $folderName = $_POST['folderName'];
                     if (file_exists($folderName)) {
-                        echo "There is already a folder with that name on the server.";
-                    }
+                        throw new Exception("That file already exists in the system.");
+                    } 
                     else if (!file_exists($folderName)) {
                         $link = new CreateDirectory();
                         echo $link->getLinkToFile();
                     }
+                } 
+                finally {
+                    
                 }
+            }
             ?>
             <div class="mb-3">
                 <label for="folderName" class="form-label">Folder Name</label>
