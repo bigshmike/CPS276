@@ -1,8 +1,9 @@
 <?php
+$output = "";
 if (count($_POST) > 0) {
     require_once 'CreateDirectory.php';
     $createDirectory = new CreateDirectory();
-    $createDirectory->createDirectory();
+    $output = $createDirectory->createDirectory();
 }
 ?>
 
@@ -23,27 +24,7 @@ if (count($_POST) > 0) {
         <form method="post" action="#">
             <h1>File and Directory Assignment</h1>
             <p>Enter a folder name and the contents of a file. Folder names should contain alpha numeric characters only.</p>
-            <?php
-            if (isset($_POST['submit'])) {
-                $folderName = $_POST['folderName'];
-                $checkFolder = new folderExistsException();
-                $checkFolder->errorMsg();
-                try {
-                    if (is_dir($folderName)) {
-                        throw new folderExistsException();
-                    }
-                    else {
-                        $linkToFile = "https://russet-v8.wccnet.edu/~mbrown99/CPS276/Assignments/assignment5/directories/$folderName/readme.txt";
-                        $error_msg = "<a href='$linkToFile'>View your file on the server here.</a>";
-                        return $error_msg;
-                    }
-                }
-                catch(Exception $e) {
-                    throw new folderExistsException();
-                    echo $e->getMessage();
-                }
-            }
-            ?>
+            <?php echo $output; ?>
             <div class="mb-3">
                 <label for="folderName" class="form-label">Folder Name</label>
                 <input type="text" class="form-control" id="folderName" name="folderName" placeholder="Folder Name">
