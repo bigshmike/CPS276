@@ -25,18 +25,22 @@ if (count($_POST) > 0) {
             <p>Enter a folder name and the contents of a file. Folder names should contain alpha numeric characters only.</p>
             <?php
             if (isset($_POST['submit'])) {
+                $folderName = $_POST['folderName'];
+                $checkFolder = new folderExistsException();
+                $checkFolder->errorMsg();
                 try {
-                    $folderName = $_POST['folderName'];
-                    if (file_exists($folderName)) {
-                        throw new Exception("That file already exists in the system.");
-                    } 
-                    else if (!file_exists($folderName)) {
-                        $link = new CreateDirectory();
-                        echo $link->getLinkToFile();
+                    if (is_dir($folderName)) {
+                        throw new folderExistsException();
                     }
-                } 
-                finally {
-                    
+                    else {
+                        $linkToFile = "https://russet-v8.wccnet.edu/~mbrown99/CPS276/Assignments/assignment5/directories/$folderName/readme.txt";
+                        $error_msg = "<a href='$linkToFile'>View your file on the server here.</a>";
+                        return $error_msg;
+                    }
+                }
+                catch(Exception $e) {
+                    throw new folderExistsException();
+                    echo $e->getMessage();
                 }
             }
             ?>
