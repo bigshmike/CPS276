@@ -14,7 +14,7 @@ class FileUploadProc extends PdoMethods{
         if ($fileSize > 100000) {
             return "The max file size is 100,000 bytes";
         }
-        if ($_POST['fileNameField'] == $fileName) {
+        if ($_POST['fileNameField'] === $fileName) {
             return "That file name already exists";
         } 
         else {
