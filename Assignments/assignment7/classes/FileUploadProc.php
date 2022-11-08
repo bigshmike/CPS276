@@ -29,13 +29,10 @@ class FileUploadProc extends PdoMethods{
             $result = $pdo->otherBinded($sql, $bindings);
 
             if ($result === 'error') {
-                return "There was an error";
-            } 
-            else {
-                return "Everything was O.K.";
-            }
-            return "Great, your PDF document was uploaded";
+                return "There has been an error, please try again";
+            }        
         }
+        return "Great, your PDF document was uploaded successfully";
     }
 
     function viewUploadedFiles() {
