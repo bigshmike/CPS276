@@ -40,7 +40,7 @@ class FileUploadProc extends PdoMethods{
 
     function viewUploadedFiles() {
         foreach (glob('./uploads/*') as $files) {
-            echo '<li><a href="'.$files.'">'.basename($files).'</a></li>';
+            echo '<li><a href="'.$files.'" target=_blank>'.basename($files).'</a></li>';
         }
     }
 }
