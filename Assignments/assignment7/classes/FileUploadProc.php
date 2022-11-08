@@ -1,7 +1,7 @@
 <?php
 require 'PdoMethods.php';
 
-class FileUploadProc extends PdoMethods{
+class FileUploadProc extends PdoMethods {
     function fileUploadProc() {
         $uploadFolder = "./uploads/";
         $fileName = $uploadFolder . $_POST['fileNameField'];
@@ -33,11 +33,5 @@ class FileUploadProc extends PdoMethods{
             }        
         }
         return "Great, your PDF document was uploaded successfully";
-    }
-
-    function viewUploadedFiles() {
-        foreach (glob('./uploads/*') as $files) {
-            echo '<li><a href="'.$files.'" target=_blank>'.basename($files).'</a></li>';
-        }
     }
 }
