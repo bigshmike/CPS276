@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'PdoMethods.php';
 
 class DateAndTime extends PdoMethods {
@@ -16,23 +15,23 @@ class DateAndTime extends PdoMethods {
         else {
             $pdo = new PdoMethods();
             $sql = "INSERT INTO notes (date_and_time, note_contents) VALUES (:dateAndTime, :noteContents)";
+            $ts = strtotime($_POST['dateAndTime']);
             $bindings = [
-                [':dateAndTime', $_POST['dateAndTime'], 'str'],
+                [':dateAndTime', $ts, 'int'],
                 [':noteContents', $_POST['note'], 'str']
             ];
             $result = $pdo->otherBinded($sql, $bindings);
 
             if ($result === 'error') {
-                return 'There was an error adding the note';
+                return "There was an error adding the note";
             }
         }
         return "Great, your note was created successfully";
-
     }
 
     function getNotes() {
-        $beginningDate = $_POST['begDate'];
-        $endingDate = $_POST['endDate'];
+        $beginningDate = strtotime($_POST['begDate']);
+        $endingDate = strtotime($_POST['endDate']);
 
         $pdo = new PdoMethods();
         $sql = "SELECT * FROM notes WHERE date_and_time BETWEEN '$beginningDate' AND '$endingDate' ORDER BY date_and_time desc";
@@ -46,29 +45,22 @@ class DateAndTime extends PdoMethods {
         } 
         else {
             if (count($records) != 0) {
-                return $this->createList($records);
+                foreach ($records as $row) {
+                    $list = '<table class="table">';
+                    $list .= '<tr>';
+                    $list .= '<th>Date and Time</th>';
+                    $list .= '<th>Note</th>';
+                    $list .= '</tr>';
+                    $list .= '<tr>';
+                    foreach ($records as $row) {
+                        $customTimestamp = date("m\-d\-Y h\:i A", $row['date_and_time']);
+                        $list .= "<td>{$customTimestamp}</td><td>{$row['note_contents']}</td></tr>";
+                    }
+                    $list .= '</tr>';
+                    $list .= '</table>';
+                }
+                return $list;
             }
         }
     }
-
-    function createList($records){
-        $_SESSION["dAndT"] = "SELECT date_and_time FROM notes";
-        $date = $_SESSION["dAndT"];
-        $customTimestamp = date("m\-d\-Y h\:i A", strtotime($date));
-		$list = '<table class="table">';
-        $list .= '<tr>';
-        $list .= '<th>Date and Time</th>
-                    <th>Note</th>';
-        $list .= '</tr>
-                    <tr>';
-		foreach ($records as $row){
-			$list .= "<td>{$customTimestamp}</td><td>{$row['note_contents']}</td></tr>";
-		}
-		$list .= '</tr>
-                    </table>';
-		return $list;
-
-	}
-    
 }
-session_destroy();

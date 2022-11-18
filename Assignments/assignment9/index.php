@@ -1,6 +1,7 @@
 <?php
 $output = "";
 if (count($_POST) > 0) {
+    session_start();
     require 'classes/DateAndTime.php';
     $dateAndTime = new DateAndTime();
     $output = $dateAndTime->createNote();
