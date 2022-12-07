@@ -2,8 +2,7 @@
 /* THIS CLASS EXTENDS THE DATABASE CONNECTION CLASS AND BUILD ON IT WITH PDO COMMANDS */
 /* THE DATABASE CONNECTION CLASS CAN BE STORED OUTSIDE OF THE EXAMPLE FILES SO YOU CANNOT SEE THE CONNECTION INFORMATION. ALSO IT IS MORE SECURE*/
 require_once 'Db_conn.php';
-class PdoMethods extends DatabaseConn
-{
+class PdoMethods extends DatabaseConn {
 
 
 	private $sth;
@@ -13,8 +12,7 @@ class PdoMethods extends DatabaseConn
 
 
 	/* THIS METHOD IS FOR ALL SELECT STATEMENTS THAT NEED TO HAVE A BINDING TO PROTECT THE DATA.  THE SCRIPT TAKES THE SQL STATEMENTS AN THE BINDING ARRAY AS ITS PARAMETERS AND PERFORMS THE QUERY.  IT WILL RUN THE QUERY AND RETURN THE RESULT AS AN ASSOCIATIVE ARRAY OR AN ERROR STRING.*/
-	public function selectBinded($sql, $bindings)
-	{
+	public function selectBinded($sql, $bindings) {
 		$this->error = false;
 
 		//I CREATE A TRY CATCH BLOCK TO CATCH ANY ERRORS THAT MIGHT ARRISE AND RETURNS AN ERROR MESSAGE.
@@ -24,7 +22,8 @@ class PdoMethods extends DatabaseConn
 			$this->sth = $this->conn->prepare($sql);
 			$this->createBinding($bindings);
 			$this->sth->execute();
-		} catch (PDOException $e) {
+		} 
+		catch (PDOException $e) {
 
 			//THIS WILL OUTPUT THE ERROR MESSAGE TO THE BROWSER REMOVE IF IN PRODUCTION
 			echo $e->getMessage();
@@ -39,8 +38,7 @@ class PdoMethods extends DatabaseConn
 	}
 
 	/* THIS FUNCTION DOES THE SAME AS THE ABOVE BUT DOES NOT NEED ANY BINDED PARAMETERS ARE NO PARAMTERS ARE PASSED */
-	public function selectNotBinded($sql)
-	{
+	public function selectNotBinded($sql) {
 		$this->error = false;
 
 		//I CREATE A TRY CATCH BLOCK TO CATCH ANY ERRORS THAT MIGHT ARRISE AND RETURNS AN ERROR MESSAGE.
@@ -49,7 +47,8 @@ class PdoMethods extends DatabaseConn
 			$this->db_connection();
 			$this->sth = $this->conn->prepare($sql);
 			$this->sth->execute();
-		} catch (PDOException $e) {
+		} 
+		catch (PDOException $e) {
 			//THIS WILL OUTPUT THE ERROR MESSAGE TO THE BROWSER REMOVE IF IN PRODUCTION
 			echo $e->getMessage();
 			return 'error';
@@ -63,8 +62,7 @@ class PdoMethods extends DatabaseConn
 	}
 
 	/* BECAUSE ONLY SELECT QUERIES RETURN A VALUE THE DOES ALL THE REST CREATE, UPDATE, DELETE */
-	public function otherBinded($sql, $bindings)
-	{
+	public function otherBinded($sql, $bindings) {
 		$this->error = false;
 
 		//I CREATE A TRY CATCH BLOCK TO CATCH ANY ERRORS THAT MIGHT ARRISE AND RETURNS AN ERROR MESSAGE.
@@ -75,7 +73,8 @@ class PdoMethods extends DatabaseConn
 			$this->sth = $this->conn->prepare($sql);
 			$this->createBinding($bindings);
 			$this->sth->execute();
-		} catch (PDOException $e) {
+		} 
+		catch (PDOException $e) {
 			//THIS WILL OUTPUT THE ERROR MESSAGE TO THE BROWSER REMOVE IF IN PRODUCTION
 			echo $e->getMessage();
 			return 'error';
@@ -88,8 +87,7 @@ class PdoMethods extends DatabaseConn
 		return 'noerror';
 	}
 
-	public function otherNotBinded($sql)
-	{
+	public function otherNotBinded($sql) {
 		$this->error = false;
 
 		//I CREATE A TRY CATCH BLOCK TO CATCH ANY ERRORS THAT MIGHT ARRISE AND RETURNS AN ERROR MESSAGE.
@@ -98,7 +96,8 @@ class PdoMethods extends DatabaseConn
 			$this->db_connection();
 			$this->sth = $this->conn->prepare($sql);
 			$this->sth->execute();
-		} catch (PDOException $e) {
+		} 
+		catch (PDOException $e) {
 			//THIS WILL OUTPUT THE ERROR MESSAGE TO THE BROWSER REMOVE IF IN PRODUCTION
 			echo $e->getMessage();
 			return 'error';
@@ -112,15 +111,13 @@ class PdoMethods extends DatabaseConn
 	}
 
 	/* CREATES A CONNECTION TO THE DATABASE */
-	private function db_connection()
-	{
+	private function db_connection() {
 		$this->db = new DatabaseConn();
 		$this->conn = $this->db->dbOpen();
 	}
 
 	/* CREATES THE BINDINGS */
-	private function createBinding($bindings)
-	{
+	private function createBinding($bindings) {
 		foreach ($bindings as $value) {
 			switch ($value[2]) {
 				case "str":

@@ -1,5 +1,8 @@
 <?php
 
-function init(){
-    return ["<h1>Welcome</h1>","<p>Welcome the stick form mod application.  Click one of the lines above</p>"];
+function init() {
+    //session_start();
+    $name = $_SESSION['name'];
+    $status = $_SESSION['status'];
+    return ["<h1>Welcome</h1>", "<p>Welcome $name, you are $status </p>"];
 }

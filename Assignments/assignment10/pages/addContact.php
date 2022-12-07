@@ -1,6 +1,7 @@
 <?php
 require_once('classes/StickyForm.php');
 require_once('classes/Pdo_methods.php');
+require_once ('pages/routes.php');
 
 $stickyForm = new StickyForm();
 
@@ -35,14 +36,14 @@ $elementsArr = [
     "regex" => "name"
   ],
   "address" => [
-    "errorMessage" => "<span style='color: red; margin-left: 15px;'>Address cannot be blank</span>",
+    "errorMessage" => "<span style='color: red; margin-left: 15px;'>Address cannot be blank and must be a valid address</span>",
     "errorOutput" => "",
     "type" => "text",
     "value" => "123 Someplace",
     "regex" => "address"
   ],
   "city" => [
-    "errorMessage" => "<span style='color: red; margin-left: 15px;'>City cannot be blank</span>",
+    "errorMessage" => "<span style='color: red; margin-left: 15px;'>City cannot be blank and must be a valid city</span>",
     "errorOutput" => "",
     "type" => "text",
     "value" => "Anywhere",
@@ -77,7 +78,7 @@ $elementsArr = [
   ],
   "updates" => [
     "action" => "notRequired",
-    "errorMessage" => "",
+    "errorMessage" => "<span style='color: red; margin-left: 15px;'></span>",
     "errorOutput" => "",
     "type" => "checkbox",
     "status" => ["newsletter" => "", "emailUpdates" => "", "textUpdates" => ""]
@@ -116,6 +117,13 @@ function addData($post) {
   } 
   else {
     $age = "";
+  }
+
+  if (isset($_POST['updates'])) {
+    $updates = $_POST['updates'];
+  }
+  else {
+    $updates = "";
   }
 
   $bindings = [
@@ -195,7 +203,7 @@ function getForm($acknowledgement, $elementsArr) {
     </div>
         
 
-    <p>Please select an age range (you must select one):</p>
+    <p>Please select an age range (you must select one):{$elementsArr['age']['errorOutput']}</p>
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="age" id="age1" value="10-18"  {$elementsArr['age']['value']['10-18']}>
       <label class="form-check-label" for="age1">10-18</label>

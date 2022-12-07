@@ -8,10 +8,10 @@ class Login {
     public function login($post) {
         $pdo = new PdoMethods();
 
-        $sql = "SELECT email, password FROM admins WHERE email = :email";
+        $sql = "SELECT status, name, email, password FROM admins WHERE email = :email";
 
         $bindings = array(
-            array(':email', $post['email'], 'str')
+          array(':email', $post['email'], 'str')
         );
     
         $records = $pdo->selectBinded($sql, $bindings);
@@ -24,6 +24,9 @@ class Login {
                 if(password_verify($post['password'], $records[0]['password'])){
                     session_start();
                     $_SESSION['access'] = "accessGranted";
+                    $_SESSION['status'] = $records[0]['status'];
+                    $_SESSION['name'] = $records[0]['name'];
+
                     return "success";
                 }
                 else {
@@ -42,7 +45,7 @@ if(isset($_POST['login'])){
   $output = $login->login($_POST);
   echo $output;
   if($output === 'success'){
-    header('location: welcome.php');
+    header('location: index.php?page=welcome');
   }
 }
 
@@ -99,7 +102,7 @@ function getForm($acknowledgement, $elementsArr) {
     </div>
     
     <div>
-    <button type="submit" name="submit" class="btn btn-primary">Login</button>
+    <button type="submit" name="login" class="btn btn-primary">Login</button>
     </div>
   </form>
 

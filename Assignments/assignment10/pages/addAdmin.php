@@ -1,10 +1,7 @@
 <?php
 require_once('classes/StickyForm.php');
-require_once 'pages/routes.php';
+require_once ('pages/routes.php');
 require_once('classes/Pdo_methods.php');
-
-$routes = new Routes();
-echo $routes->security();
 
 $stickyForm = new StickyForm();
 
@@ -46,7 +43,7 @@ $elementsArr = [
         "regex" => "email"
     ],
     "password" => [
-        "errorMessage" => "<span style='color: red; margin-left: 15px;'>Password cannot be blank</span>",
+        "errorMessage" => "<span style='color: red; margin-left: 15px;'>Password cannot be blank and must be a valid password</span>",
         "errorOutput" => "",
         "type" => "password",
         "value" => "password",
@@ -102,7 +99,7 @@ function addData($post) {
 
 function getForm($acknowledgement, $elementsArr) {
     global $stickyForm;
-    
+
     $options = $stickyForm->createOptions($elementsArr['status']);
 
     $form = <<<HTML
@@ -111,7 +108,7 @@ function getForm($acknowledgement, $elementsArr) {
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="name">Name</label>
+            <label for="name">Name (letters only){$elementsArr['name']['errorOutput']}</label>
               <input type="text" class="form-control" name="name" value="{$elementsArr['name']['value']}">
             </div>
           </div>
@@ -119,7 +116,7 @@ function getForm($acknowledgement, $elementsArr) {
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="name">Email</label>
+            <label for="name">Email{$elementsArr['email']['errorOutput']}</label>
               <input type="text" class="form-control" name="email" value="{$elementsArr['email']['value']}">
             </div>
           </div>
@@ -127,7 +124,7 @@ function getForm($acknowledgement, $elementsArr) {
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="password">Password</label>
+            <label for="name">Password {$elementsArr['password']['errorOutput']}</label>
               <input type="password" class="form-control" name="password" value="{$elementsArr['password']['value']}">
             </div>
           </div>
