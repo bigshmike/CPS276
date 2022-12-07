@@ -1,6 +1,5 @@
 <?php
 require_once('classes/StickyForm.php');
-require_once ('pages/routes.php');
 require_once('classes/Pdo_methods.php');
 
 $stickyForm = new StickyForm();

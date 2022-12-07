@@ -1,6 +1,5 @@
 <?php
 require_once 'classes/Pdo_methods.php';
-require_once ('pages/routes.php');
 
 function init() {
     if (isset($_POST['delete'])) {
