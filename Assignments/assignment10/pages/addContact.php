@@ -111,13 +111,6 @@ function addData($post) {
     }
   }
 
-  if (isset($_POST['age'])) {
-    $age = $_POST['age'];
-  } 
-  else {
-    $age = "";
-  }
-
   if (isset($_POST['updates'])) {
     $updates = $_POST['updates'];
   }
