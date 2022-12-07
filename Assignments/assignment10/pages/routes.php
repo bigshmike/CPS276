@@ -29,7 +29,6 @@ $path = "index.php?page=login";
 
 function security() {
     global $adminNav, $nav, $staffNav;
-    //session_start();
     if($_SESSION['access'] == "accessGranted"){
         if($_SESSION['status'] == "admin"){
             $nav = $adminNav;
